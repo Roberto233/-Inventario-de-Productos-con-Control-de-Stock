@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const Producto = require('../models/producto.model');
 
 exports.crear = async (req, res) => {
@@ -61,3 +62,27 @@ exports.movimiento = async (req, res) => {
     res.status(400).json({ error: 'Error al registrar movimiento', detalle: err.message });
   }
 };
+=======
+const Producto = require('../models/producto.model');
+
+exports.getProductos = async (req, res) => {
+  const productos = await Producto.find().populate('categoria');
+  res.json(productos);
+};
+
+exports.crearProducto = async (req, res) => {
+  const nuevo = new Producto(req.body);
+  const producto = await nuevo.save();
+  res.status(201).json(producto);
+};
+
+exports.actualizarProducto = async (req, res) => {
+  const producto = await Producto.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.json(producto);
+};
+
+exports.eliminarProducto = async (req, res) => {
+  await Producto.findByIdAndDelete(req.params.id);
+  res.status(204).end();
+};
+>>>>>>> be8c1894970d6ea5661a67e5fcdd8b2c34133974

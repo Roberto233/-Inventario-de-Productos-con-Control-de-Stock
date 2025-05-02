@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const mongoose = require('mongoose');
 const productoSchema = new mongoose.Schema({
   nombre: { type: String, required: true },
@@ -13,4 +14,21 @@ const productoSchema = new mongoose.Schema({
     }
   ]
 });
+=======
+const mongoose = require('mongoose');
+
+const productoSchema = new mongoose.Schema({
+  nombre: { type: String, required: true },
+  categoria: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' },
+  stock: { type: Number, default: 0 },
+  historial: [
+    {
+      tipo: String, // entrada o salida
+      cantidad: Number,
+      fecha: { type: Date, default: Date.now },
+    },
+  ],
+});
+
+>>>>>>> be8c1894970d6ea5661a67e5fcdd8b2c34133974
 module.exports = mongoose.model('Producto', productoSchema);
