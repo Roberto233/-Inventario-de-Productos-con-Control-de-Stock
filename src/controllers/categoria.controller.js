@@ -1,6 +1,5 @@
 const Categoria = require('../models/categoria.model');
 
-<<<<<<< HEAD
 exports.crear = async (req, res) => {
   try {
     const nueva = new Categoria(req.body);
@@ -12,14 +11,10 @@ exports.crear = async (req, res) => {
 };
 
 exports.listar = async (req, res) => {
-=======
-exports.getCategorias = async (req, res) => {
->>>>>>> be8c1894970d6ea5661a67e5fcdd8b2c34133974
   const categorias = await Categoria.find();
   res.json(categorias);
 };
 
-<<<<<<< HEAD
 exports.actualizar = async (req, res) => {
   try {
     const actualizada = await Categoria.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -39,10 +34,3 @@ exports.eliminar = async (req, res) => {
     res.status(400).json({ error: 'Error al eliminar categoría', detalle: err.message });
   }
 };
-=======
-exports.crearCategoria = async (req, res) => {
-  const nueva = new Categoria(req.body);
-  const categoria = await nueva.save();
-  res.status(201).json(categoria);
-};
->>>>>>> be8c1894970d6ea5661a67e5fcdd8b2c34133974
